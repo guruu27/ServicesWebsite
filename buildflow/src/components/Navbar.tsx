@@ -2,12 +2,14 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const NAV_LINKS = [
-  { label: "Features", href: "#features" },
-  { label: "Solutions", href: "#solutions" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Docs", href: "#docs" },
+  { label: "Features", href: "/features" },
+  { label: "Solutions", href: "/solutions" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Docs", href: "/docs" },
+  { label: "Book Audit", href: "/book-audit" },
 ];
 
 export default function Navbar() {
@@ -29,7 +31,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         {/* Left: Logo + Links */}
         <div className="flex items-center gap-8">
-          <a href="#" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2">
             <Image
               src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/brand-assets/finsight.framer.ai/logo-1773850646842.svg"
               alt="Buildflow Logo"
@@ -39,31 +41,31 @@ export default function Navbar() {
               unoptimized
             />
             <span className="text-xl font-bold tracking-tighter">Buildflow</span>
-          </a>
+          </Link>
           <div className="hidden md:flex items-center gap-6">
             {NAV_LINKS.map((link) => (
-              <a
+              <Link
                 key={link.label}
                 href={link.href}
                 className="text-sm text-gray-400 hover:text-white transition-colors"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
         </div>
 
         {/* Right: Auth */}
         <div className="hidden sm:flex items-center gap-4">
-          <a href="#login" className="text-sm text-gray-300 hover:text-white transition-colors">
+          <Link href="/login" className="text-sm text-gray-300 hover:text-white transition-colors">
             Login
-          </a>
-          <a
-            href="#signup"
+          </Link>
+          <Link
+            href="/signup"
             className="bg-[#5050f2] hover:bg-[#4040d2] text-white px-5 py-2.5 rounded-full text-sm font-medium transition-all shadow-lg shadow-[#5050f2]/20"
           >
             Start Free Trial
-          </a>
+          </Link>
         </div>
 
         {/* Mobile menu button */}
@@ -86,22 +88,22 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="sm:hidden bg-black/95 backdrop-blur-xl border-t border-white/5 px-6 py-4 space-y-4">
           {NAV_LINKS.map((link) => (
-            <a
+            <Link
               key={link.label}
               href={link.href}
               className="block text-sm text-gray-400 hover:text-white transition-colors"
               onClick={() => setMobileOpen(false)}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
-          <a href="#login" className="block text-sm text-gray-300">Login</a>
-          <a
-            href="#signup"
+          <Link href="/login" className="block text-sm text-gray-300">Login</Link>
+          <Link
+            href="/signup"
             className="inline-block bg-[#5050f2] text-white px-5 py-2.5 rounded-full text-sm font-medium"
           >
             Start Free Trial
-          </a>
+          </Link>
         </div>
       )}
     </nav>
